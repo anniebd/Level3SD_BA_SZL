@@ -9,12 +9,23 @@ namespace Level3SD_BA_SZL
 {
     class Card : PictureBox
     {
+        int id;
+        int column = 5;
+        
         public static int size = 80;
         public Card()
         {
             Height = size;
             Width = size;
             Load($"Pictures/background.png");
+
+            MouseClick += Card_MouseClick;
+        }
+
+        private void Card_MouseClick(object sender, MouseEventArgs e)
+        {
+            id = 1 + Top / size * column + Left / size;
+            Load($"Pictures/p{id}.png");
         }
     }
 }
