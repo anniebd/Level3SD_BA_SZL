@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Level3SD_BA_SZL
     {
         int id;
         int column = 5;
-        
+
         public static int size = 80;
         public Card()
         {
@@ -24,8 +25,9 @@ namespace Level3SD_BA_SZL
 
         private void Card_MouseClick(object sender, MouseEventArgs e)
         {
-            id = 1 + Top / size * column + Left / size;
-            Load($"Pictures/p{id}.png");
+            id = Top / size * column + Left / size;
+            Load($"Pictures/p{Form1.mixed_id[id]}.png");
         }
+
     }
 }

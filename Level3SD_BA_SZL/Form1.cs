@@ -14,19 +14,17 @@ namespace Level3SD_BA_SZL
     {
         Random rnd = new Random();
 
-        public int n;
-        public int row;
-        public int column;
-        
+        public static int n = 20;
+        public static int[] mixed_id = new int[n];
+ 
         public Form1()
         {
             InitializeComponent();
 
-            n = 20;
-            Mix(n);
+            Mix(n); 
 
-            row = 4;
-            column = 5;
+            int row = 4;
+            int column = 5;
 
             for (int i = 0; i < row; i++)
             {
@@ -47,23 +45,22 @@ namespace Level3SD_BA_SZL
 
         void Mix(int n)
         {
-            int[] list = new int[n];
             for (int i = 0; i < n; i+=2)
             {
-                list[i] = i / 2 + 1;
-                list[i + 1] = i / 2 + 1;
+                mixed_id[i] = i / 2 + 1;
+                mixed_id[i + 1] = i / 2 + 1;
             }
             for (int i = 0; i < n; i++)
             {
                 int x1 = rnd.Next(n);
                 int x2 = rnd.Next(n);
-                int help = list[x1];
-                list[x1] = list[x2];
-                list[x2] = help;
+                int help = mixed_id[x1];
+                mixed_id[x1] = mixed_id[x2];
+                mixed_id[x2] = help;
             }
         }
 
-
+        
 
     }
 }
