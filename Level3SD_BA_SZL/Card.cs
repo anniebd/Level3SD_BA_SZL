@@ -10,23 +10,50 @@ namespace Level3SD_BA_SZL
 {
     class Card : PictureBox
     {
-        int id;
-        int column = 5;
+        public int id = 0;
+        public int pictureId = 0;
+        int interval = 3000;
+
+        Timer timer = new Timer();
 
         public static int size = 80;
-        public Card()
+        public Card(int row, int coloumn, int cardId)
         {
+            id = Form1.mixed_id[cardId];
+
             Height = size;
             Width = size;
-            Load($"Pictures/background.png");
+
+            Top = row * (size + 3);
+            Left = coloumn * (size + 3);
+
+            Down();
 
             MouseClick += Card_MouseClick;
+            timer.Interval = interval;
+            timer.Tick += Timer_Tick;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            Down();
+            timer.Stop();
         }
 
         private void Card_MouseClick(object sender, MouseEventArgs e)
         {
-            id = Top / size * column + Left / size;
-            Load($"Pictures/p{Form1.mixed_id[id]}.png");
+            Up();
+        }
+
+        public void Up()
+        {
+            Load($"Pictures/p{id}.png");
+            timer.Start();
+        }
+
+        public void Down()
+        {
+            Load($"Pictures/background.png");
         }
 
     }
