@@ -12,7 +12,7 @@ namespace Level3SD_BA_SZL
     {
         public int id = 0;
         public int pictureId = 0;
-        int interval = 3000;
+        int interval = 2000;
 
         Timer timer = new Timer();
 
